@@ -4,10 +4,13 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				'dark-red': '#3c0c0c',
+				'dark-red': '#0e0e0e',
 				'primary-red': '#c00',
 				'highlight-red': '#990000',
-				'light-gray': '#f5f5f5',
+				'light-gray': '#CFC5C5',
+				'light': '#f6f6f6',
+				'logo-red': '#FF5656',
+				
 			},
 		},
 	},

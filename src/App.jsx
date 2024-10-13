@@ -1,5 +1,11 @@
+import Sidebar from './components/Sidebar'
+
 function App() {
-	return <h1 className='bg-highlight-red text-green-900 text-3xl'>App</h1>
+	return (
+		<div className='flex'>
+			<Sidebar />
+		</div>
+	)
 }
 
 export default App
