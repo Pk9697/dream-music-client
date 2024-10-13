@@ -7,7 +7,7 @@ import settings from '../assets/settings.png'
 import logout from '../assets/logout.png'
 
 const Sidebar = () => (
-	<div className='bg-dark-red text-light h-screen flex flex-col p-2 sm:p-4 md:p-6 gap-12'>
+	<div className='bg-dark-red text-light h-screen flex flex-col p-4 md:p-6 gap-12'>
 		<div className='flex items-center justify-center gap-4'>
 			<div className='size-10'>
 				<img src={logo} alt='logo' />
