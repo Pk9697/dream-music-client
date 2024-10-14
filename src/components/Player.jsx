@@ -49,7 +49,7 @@ const Player = ({ currentSong }) => {
 			</div>
 
 			<div className='w-full flex justify-between items-center gap-3'>
-				<span className='text-sm font-medium'>1:57</span>
+				<span className='text-sm font-medium'>0:00</span>
 				<input
 					type='range'
 					className='w-full accent-light'
