@@ -6,7 +6,9 @@ export default {
 			colors: {
 				'dark-red': '#0e0e0e',
 				'primary-red': '#410100',
-				'highlight-red': '#990000',
+				'primary-red-200': '#270504',
+				'highlight-red': '#520000',
+				'border-highlight-red': '#b30909',
 				'logo-red': '#FF5656',
 				'input-red': '#2c0001',
 				'light-gray': '#CFC5C5',
