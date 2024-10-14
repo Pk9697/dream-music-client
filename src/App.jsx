@@ -3,47 +3,55 @@ import Artist from './components/Artist'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import SongList from './components/SongList'
+import Player from './components/Player'
 
 function App() {
 	const songs = [
 		{
 			id: 1,
-			title: 'Michael Jackson - Beat it',
+			title: 'Michael Jackson - Give in to me',
+			artist: 'Michael Jackson',
 			playing: '1.040.811.084',
-			time: '3:45',
-			album: 'Beat it',
+			time: '5:29',
+			album: 'Give in to me',
+			url: 'https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav',
+			albumCover: 'https://s3.amazonaws.com/freecodecamp/album1.jpg',
 		},
 		{
 			id: 2,
-			title: 'Michael Jackson - I wish you were here',
+			title: 'Michael Jackson - Gone too soon',
+			artist: 'Michael Jackson',
 			playing: '20.410.084',
-			time: '4:40',
-			album: 'I wish you were here',
+			time: '3:38',
+			album: 'Gone too soon',
 		},
 		{
 			id: 3,
-			title: 'Michael Jackson - Rock with you',
+			title: 'Michael Jackson - Another Part Of Me',
+			artist: 'Michael Jackson',
 			playing: '152.147.084',
-			time: '2:45',
-			album: 'Rock with you',
+			time: '4:43',
+			album: 'Another Part Of Me',
 		},
 		{
 			id: 4,
 			title: 'Michael Jackson - Billie Jean',
+			artist: 'Michael Jackson',
 			playing: '354.151.149',
-			time: '2:59',
+			time: '4:55',
 			album: 'Billie Jean',
 		},
 		{
 			id: 5,
 			title: 'Michael Jackson - The way you make me feel',
+			artist: 'Michael Jackson',
 			playing: '351.753.196',
-			time: '4:30',
+			time: '6:43',
 			album: 'The way you make me feel',
 		},
 	]
 
-	const [currentSongId, setCurrentSongId] = useState(1)
+	const [currentSongId, setCurrentSongId] = useState(null)
 	return (
 		<div className='flex'>
 			<Sidebar />
@@ -57,7 +65,11 @@ function App() {
 						onSongSelect={(songId) => setCurrentSongId(songId)}
 					/>
 				</div>
-				<div className='hidden lg:block bg-dark-red min-w-60'>hello</div>
+				{currentSongId && (
+					<Player
+						currentSong={songs.find((song) => song.id === currentSongId)}
+					/>
+				)}
 			</div>
 		</div>
 	)
