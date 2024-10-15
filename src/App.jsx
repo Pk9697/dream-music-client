@@ -51,6 +51,29 @@ function App() {
 	]
 
 	const [currentSongId, setCurrentSongId] = useState(null)
+
+	const handleNextSong = () => {
+		const currentSongIndex = songs.findIndex(
+			(song) => song.id === currentSongId
+		)
+		if (currentSongIndex === songs.length - 1) {
+			setCurrentSongId(songs[0].id)
+		} else {
+			setCurrentSongId(songs[currentSongIndex + 1].id)
+		}
+	}
+
+	const handlePreviousSong = () => {
+		const currentSongIndex = songs.findIndex(
+			(song) => song.id === currentSongId
+		)
+		if (currentSongIndex === 0) {
+			setCurrentSongId(songs[songs.length - 1].id)
+		} else {
+			setCurrentSongId(songs[currentSongIndex - 1].id)
+		}
+	}
+
 	return (
 		<div className='flex'>
 			<Sidebar />
@@ -67,6 +90,8 @@ function App() {
 				{currentSongId && (
 					<Player
 						currentSong={songs.find((song) => song.id === currentSongId)}
+						handleNextSong={handleNextSong}
+						handlePreviousSong={handlePreviousSong}
 					/>
 				)}
 			</div>

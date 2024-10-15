@@ -13,7 +13,7 @@ import {
 import { getSongUrl } from '../utils/getAssetUrl'
 import { formatTime } from '../utils/formatTime'
 
-const Player = ({ currentSong }) => {
+const Player = ({ currentSong,handleNextSong, handlePreviousSong }) => {
 	const [isPlaying, setIsPlaying] = useState(true) // Default to play when song starts
 	const [progress, setProgress] = useState(0)
 	const [duration, setDuration] = useState(0) // Duration of the song
@@ -97,7 +97,7 @@ const Player = ({ currentSong }) => {
 				<button className='bg-none'>
 					<RepeatIcon />
 				</button>
-				<button className='bg-none'>
+				<button className='bg-none' onClick={handlePreviousSong}>
 					<SkipBackIcon />
 				</button>
 				<button
@@ -106,7 +106,7 @@ const Player = ({ currentSong }) => {
 				>
 					{!isPlaying ? <PlayIcon /> : <PauseIcon />}
 				</button>
-				<button className='bg-none'>
+				<button className='bg-none' onClick={handleNextSong}>
 					<SkipForwardIcon />
 				</button>
 				<button className='bg-none'>
