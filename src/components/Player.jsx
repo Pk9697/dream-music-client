@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import ReactHowler from 'react-howler'
 import albumCover from '../assets/albumCover.png'
 
@@ -10,26 +10,16 @@ import {
 	SkipBackIcon,
 	SkipForwardIcon,
 } from 'lucide-react'
+import { getSongUrl } from '../utils/getAssetUrl'
 
 const Player = ({ currentSong }) => {
 	const [isPlaying, setIsPlaying] = useState(true) // Default to play when song starts
 	const [seek, setSeek] = useState(0)
 	const playerRef = useRef(null)
-	const [songFile, setSongFile] = useState(null)
-
-	useLayoutEffect(() => {
-		async function importFile() {
-			const file = await import(`../assets/songs/${currentSong.url}`)
-			setSongFile(file.default)
-		}
-		importFile()
-	}, [currentSong])
 
 	const handlePlayPause = () => {
 		setIsPlaying((prev) => !prev)
 	}
-
-	console.log(songFile)
 
 	return (
 		<div className='bg-player-red p-4 rounded-xl fixed bottom-5 right-5 w-64 aspect-[4/5] flex flex-col items-center justify-between gap-4'>
@@ -60,16 +50,14 @@ const Player = ({ currentSong }) => {
 				/>
 				<span className='text-sm font-medium'>{currentSong.time}</span>
 			</div>
-			{songFile && (
-				<ReactHowler
-					ref={playerRef}
-					src={songFile}
-					playing={isPlaying}
-					onEnd={() => setIsPlaying(false)}
-					onLoad={() => console.log('Song loaded')}
-					onSeek={() => console.log('Song seeked')}
-				/>
-			)}
+			<ReactHowler
+				ref={playerRef}
+				src={getSongUrl(currentSong.url)}
+				playing={isPlaying}
+				onEnd={() => setIsPlaying(false)}
+				onLoad={() => console.log('Song loaded')}
+				onSeek={() => console.log('Song seeked')}
+			/>
 
 			<div className='w-full flex justify-between items-center'>
 				<button className='bg-none'>
