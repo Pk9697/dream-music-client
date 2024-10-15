@@ -14,7 +14,7 @@ function App() {
 			playing: '1.040.811.084',
 			time: '5:29',
 			album: 'Give in to me',
-			url: 'https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav',
+			url: 'song1.mp3',
 			albumCover: 'https://s3.amazonaws.com/freecodecamp/album1.jpg',
 		},
 		{
@@ -24,6 +24,7 @@ function App() {
 			playing: '20.410.084',
 			time: '3:38',
 			album: 'Gone too soon',
+			url: 'song2.mp3',
 		},
 		{
 			id: 3,
@@ -32,6 +33,7 @@ function App() {
 			playing: '152.147.084',
 			time: '4:43',
 			album: 'Another Part Of Me',
+			url: 'song3.mp3',
 		},
 		{
 			id: 4,
@@ -40,6 +42,7 @@ function App() {
 			playing: '354.151.149',
 			time: '4:55',
 			album: 'Billie Jean',
+			url: 'song4.mp3',
 		},
 		{
 			id: 5,
@@ -48,6 +51,7 @@ function App() {
 			playing: '351.753.196',
 			time: '6:43',
 			album: 'The way you make me feel',
+			url: 'song5.mp3',
 		},
 	]
 

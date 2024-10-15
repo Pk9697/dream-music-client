@@ -1,12 +1,7 @@
-import { useMemo, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import ReactHowler from 'react-howler'
-// import audio from '../assets/audio.mp3'
 import albumCover from '../assets/albumCover.png'
-import song1 from '../assets/songs/song1.mp3'
-import song2 from '../assets/songs/song2.mp3'
-import song3 from '../assets/songs/song3.mp3'
-import song4 from '../assets/songs/song3.mp3'
-import song5 from '../assets/songs/song3.mp3'
+
 import {
 	PauseIcon,
 	PlayIcon,
@@ -16,20 +11,25 @@ import {
 	SkipForwardIcon,
 } from 'lucide-react'
 
-const songsList = [song1, song2, song3, song4, song5]
-
 const Player = ({ currentSong }) => {
 	const [isPlaying, setIsPlaying] = useState(true) // Default to play when song starts
 	const [seek, setSeek] = useState(0)
 	const playerRef = useRef(null)
-	const songSrc = useMemo(
-		() => songsList[currentSong.id - 1],
-		[currentSong]
-	)
+	const [songFile, setSongFile] = useState(null)
+
+	useLayoutEffect(() => {
+		async function importFile() {
+			const file = await import(`../assets/songs/${currentSong.url}`)
+			setSongFile(file.default)
+		}
+		importFile()
+	}, [currentSong])
 
 	const handlePlayPause = () => {
 		setIsPlaying((prev) => !prev)
 	}
+
+	console.log(songFile)
 
 	return (
 		<div className='bg-player-red p-4 rounded-xl fixed bottom-5 right-5 w-64 aspect-[4/5] flex flex-col items-center justify-between gap-4'>
@@ -58,17 +58,18 @@ const Player = ({ currentSong }) => {
 					value={seek}
 					onChange={(e) => setSeek(e.target.value)}
 				/>
-                <span className='text-sm font-medium'>{currentSong.time}</span>
+				<span className='text-sm font-medium'>{currentSong.time}</span>
 			</div>
-
-			<ReactHowler
-				ref={playerRef}
-				src={songSrc}
-				playing={isPlaying}
-				onEnd={() => setIsPlaying(false)}
-				onLoad={() => console.log('Song loaded')}
-				onSeek={() => console.log('Song seeked')}
-			/>
+			{songFile && (
+				<ReactHowler
+					ref={playerRef}
+					src={songFile}
+					playing={isPlaying}
+					onEnd={() => setIsPlaying(false)}
+					onLoad={() => console.log('Song loaded')}
+					onSeek={() => console.log('Song seeked')}
+				/>
+			)}
 
 			<div className='w-full flex justify-between items-center'>
 				<button className='bg-none'>
