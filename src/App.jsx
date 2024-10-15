@@ -56,7 +56,7 @@ function App() {
 		<div className='flex'>
 			<Sidebar />
 			<div className='w-full flex'>
-				<div className='flex-grow bg-primary-red flex flex-col gap-8'>
+				<div className='flex-grow bg-primary-red flex flex-col gap-8 main'>
 					<Navbar />
 					<Artist />
 					<SongList

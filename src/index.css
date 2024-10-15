@@ -13,3 +13,7 @@ img {
 	object-position: center;
 }
 
+.main {
+	background: rgb(68,1,2);
+	background: linear-gradient(180deg, rgba(68,1,2,1) 25%, rgba(16,8,9,1) 100%);
+}

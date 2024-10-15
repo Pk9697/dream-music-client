@@ -1,7 +1,7 @@
 import music from '../assets/music.png'
 
 const SongList = ({ songs = [], currentSongId = 1, onSongSelect }) => (
-	<div className='bg-primary-red-200'>
+	<div className=''>
 		<div className='flex justify-between items-center px-4 md:px-12'>
 			<h2 className='text-2xl font-semibold mb-4'>Popular</h2>
 			<a href='#' className='text-lg font-semibold text-light-gray'>
