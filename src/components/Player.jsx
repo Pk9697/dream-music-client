@@ -41,7 +41,7 @@ const Player = ({ currentSong,handleNextSong, handlePreviousSong }) => {
 	const handleLoad = () => {
 		const sound = playerRef.current?.howler
 		if (sound) {
-			console.log(sound)
+			// console.log(sound)
 			setDuration(sound.duration()) // Set duration when the song loads
 		}
 	}
@@ -90,7 +90,6 @@ const Player = ({ currentSong,handleNextSong, handlePreviousSong }) => {
 				playing={isPlaying}
 				onEnd={() => setIsPlaying(false)}
 				onLoad={handleLoad} // When audio loads, get the duration
-				onSeek={() => console.log('Song seeked')}
 			/>
 
 			<div className='w-full flex justify-between items-center'>
